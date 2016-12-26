@@ -1,0 +1,11 @@
+
+<ul>
+
+  <li ng-repeat="item in list.items">
+
+    {{item.name}} - {{item.short_name}} - {{item.description}} -
+    <button type="button" name="button" ng-click="list.onRemove({index:$index})">Don't want this one</button>
+  </li>
+</ul>
+<!-- <h1><span ng-if="list.items.length > 0">No item matches the search.!! try again.!!</span></h1> -->
+<h1><span>{{list.error}}</span></h1>
