@@ -33,7 +33,7 @@ function NarrowItDownController(menuSearchService,$timeout) {
 
     list.NarrowItem=function(){
       list.error="";
-      if (list.searchDescription!=null || list.searchDescription!=undefined) {
+      if ((list.searchDescription!=null || list.searchDescription!=undefined) && list.searchDescription!="") {
         menuSearchService.getMatchedMenuItems(list.searchDescription);
         $timeout(function () {
           if (list.items.length==0) {
@@ -64,9 +64,12 @@ function NarrowItDownController(menuSearchService,$timeout) {
     }
 
     list.removeItem=function(index){
-      menuSearchService.removeItem(index);
-      this.removed="Last item removed" + list.items[index].name;
-      
+      menuSearchService.removeItem(index);      
+      if (list.items[index]!=undefined) {
+          this.removed="Last item removed" + list.items[index].name;
+      }
+
+
     }
 
 }
